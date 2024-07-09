@@ -7,25 +7,23 @@ import { useEffect, useState } from "react";
 export default function Search() {
     const [products, setProducts] = useState([]);
     const router = useRouter();
-    const { keyword } = router.query;
+    const { q } = router.query;
 
-    async function getProducts(value) {
-        const res = await axios.get(`/products/?keyword=${value}`);
+    async function getProducts(query) {
+        const res = await axios.get(`/products/?q=${query}`); // 리퀘스트 요청에 있는 q 사용
         const nextProducts = await res.data.results || [];
         setProducts(nextProducts);
     }
 
     useEffect(() => {
-        if (keyword) {
-            getProducts(keyword).then();
-        }
-    }, [keyword]);
+        getProducts(q).then();
+    }, [q]);
 
     return (
         <div>
             <h1>Search</h1>
-            <SearchForm initialKeyword={keyword} />
-            <h2>{keyword} 검색 결과</h2>
+            <SearchForm initialQuery={q} />
+            <h2>{q} 검색 결과</h2>
             <ProductList products={products} />
         </div>
     );

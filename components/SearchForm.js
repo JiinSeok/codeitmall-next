@@ -1,26 +1,26 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-export default function SearchForm({ initialKeyword='' }) {
+export default function SearchForm({ initialQuery='' }) {
     const router = useRouter();
-    const [value, setValue] = useState(initialKeyword);
+    const [query, setQuery] = useState(initialQuery);
 
     function handleChange(e) {
-        setValue(e.target.value);
+        setQuery(e.target.value);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (value === '') {
+        if (query === '') {
             router.push('/');
             return;
         }
-        router.push(`/search?keyword=${value}`);
+        router.push(`/search?q=${query}`);
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <input name="keyword" value={value} onChange={handleChange} />
+            <input name="q" value={query} onChange={handleChange} />
             <button>검색</button>
         </form>
     );
