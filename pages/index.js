@@ -6,19 +6,19 @@ import axios from '@/lib/axios';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
-export default function Home() {
-  const [products, setProducts] = useState([]);
+export async function getStaticProps() {
+  // 정적 생성 시 Next.js가 실행할 함수를 구현
+  const res = await axios.get('/products');
+  const products = await res.data.results;
 
-  async function getProducts() {
-    const res = await axios.get('/products');
-    const nextProducts = await res.data.results;
-    setProducts(nextProducts);
-  }
+  return {
+    props: {
+      products,
+    },
+  };
+}
 
-  useEffect(() => {
-    getProducts().then();
-  }, []);
-
+export default function Home({ products }) {
   return (
     <>
       <Head>
