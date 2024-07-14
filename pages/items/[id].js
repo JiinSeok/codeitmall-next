@@ -28,7 +28,7 @@ export async function getStaticProps(context) {
     const response = await axios.get(`/products/${productId}`);
     product = response.data;
   } catch {
-    return {x
+    return {
       notFound: true,
     };
   }
@@ -50,6 +50,12 @@ export default function Product({ product }) {
     const nextSizeReviews = response.data ?? [];
     setSizeReviews(nextSizeReviews);
   }
+
+  useEffect(() => {
+    if (id) {
+      getSizeReviews(id);
+    }
+  }, [id]);
 
   if (!product) {
     return <div>Loading...</div>; // 정적 생성 안 되어 있을 때 나타날 로딩 화면
