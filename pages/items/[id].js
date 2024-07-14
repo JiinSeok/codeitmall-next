@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
 
 export default function Product({ product, sizeReviews }) {
   if (!product) {
-    return <div>Loading...</div>; // 정적 생성 안 되어 있을 때 나타날 로딩 화면
+    return <div>Loading...</div>; // 데이터 렌더링 안 되어 있을 때 나타날 로딩 화면
   }
 
   return (
