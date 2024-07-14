@@ -51,11 +51,6 @@ export default function Product({ product }) {
     setSizeReviews(nextSizeReviews);
   }
 
-  useEffect(() => {
-    if (id) {
-    }
-  }, [id]);
-
   if (!product) {
     return <div>Loading...</div>; // 정적 생성 안 되어 있을 때 나타날 로딩 화면
   }
