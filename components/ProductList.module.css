@@ -1,20 +1,27 @@
 .productList {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    list-style: none;
-    padding: 0;
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  padding: 0;
+  gap: 24px;
 }
 
 .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
 }
 
 .productName {
-    font-size: 20px;
-    font-weight: 800;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.image {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }

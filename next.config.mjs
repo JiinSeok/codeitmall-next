@@ -8,7 +8,17 @@ const nextConfig = {
         destination: '/items/:id',
         permanent: true, // 웹브라우저에게 주소가 바뀌었다는 것을 저장하게 하려면 true (308), false는 307
       },
-    ]
+    ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'learn-codeit-kr-static.s3.ap-northeast-2.amazonaws.com',
+        port: '',
+        pathname: '/codeitmall/**',
+      },
+    ],
   },
 };
 
