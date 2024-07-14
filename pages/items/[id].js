@@ -7,7 +7,7 @@ import styles from '@/styles/Product.module.css';
 
 export async function getStaticPaths() {
   // 동적인 페이지를 정적생성할 때 어떤 페이지를 생성할지 정해준다.
-  const res = await axios.get('/products/');
+  const res = await axios.get('/products');
   const products = res.data.results;
   const paths = products.map((product) => ({
     params: { id: String(product.id) }, // 사이트 주소 문자열
@@ -20,15 +20,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  // context 객체를 받을 수 있다.
-  const produtId = context.params['id'];
+  // 정적 생성 과정에서 제공되는 페이지 생성 정보 context 객체를 받을 수 있다.
+  const productId = context.params['id'];
   let product;
 
   try {
-    const response = await axios.get(`/products/${produtId}`);
+    const response = await axios.get(`/products/${productId}`);
     product = response.data;
   } catch {
-    return {
+    return {x
       notFound: true,
     };
   }
